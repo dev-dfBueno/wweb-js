@@ -20,26 +20,37 @@ It uses Puppeteer to run a real instance of Whatsapp Web to avoid getting blocke
 
 ## Installation
 
-The module is now available on npm! `npm i whatsapp-web.js & npm install sync-prompt`
+The module is now available on npm! `npm i whatsapp-web.js && npm install fs`
 
 Please note that Node v12+ is required.
 
 ## Example usage
 
 ```js
-const { Client } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
+const { Client, LocalAuth} = require('whatsapp-web.js');
+const client = new Client({
+    authStrategy: new LocalAuth({ clientId: process.argv[2] }),
+    puppeteer: {
+        headless: true,
+    },
 
-const client = new Client();
-client.stage = 0;
+});
+const fs = require('fs');
+const dataAtual = new Date();
+dataAtual.setDate(dataAtual.getDate() + 1);
 
+client.setMaxListeners(100000);
+// Iniciar o QR CODE 
 client.on('qr', qr => {
-    qrcode.generate(qr, {small: true});
+    qrcode.generate(qr, { small: true });
 });
-
+// Vai informar se o login foi efetuado 
 client.on('ready', () => {
-    console.log('Client Connected!');
+    console.log('Tudo certo! WhatsApp conectado.');
 });
+// E inicializa tudo para fazer a nossa magica =)
+client.initialize();
 ```
 
 Take a look at [example.js](https://github.com/dev-dfbueno/wweb-js/bot.js) for another example with more use cases.
