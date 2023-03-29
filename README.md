@@ -70,9 +70,9 @@ For more information on saving and restoring sessions, check out the available [
 | Send stickers | ✅ |
 | Receive media (images/audio/video/documents)  | ✅  |
 | Send contact cards | ✅ |
-| Send location | ✅ |
-| Send buttons | ✅ |
-| Send lists | ✅ (business accounts not supported) |
+| Send location | ❌ | (not supported)
+| Send buttons | ❌ |(not supported)
+| Send lists | ❌ (business accounts not supported) |
 | Receive location | ✅ | 
 | Message replies | ✅ |
 | Join groups by invite  | ✅ |
